@@ -1,0 +1,17 @@
+(ns javafx.scene.chart
+  (:require [javafx-wrapper :refer :all]))
+
+(defobject axis-tick-mark javafx.scene.chart.Axis$TickMark)
+(defobject category-axis javafx.scene.chart.CategoryAxis)
+(defobject number-axis javafx.scene.chart.NumberAxis)
+(defobject pie-chart javafx.scene.chart.PieChart)
+(defobject area-chart javafx.scene.chart.AreaChart)
+(defobject bar-chart javafx.scene.chart.BarChart)
+(defobject bubble-chart javafx.scene.chart.BubbleChart)
+(defobject line-chart javafx.scene.chart.LineChart)
+(defobject scatter-chart javafx.scene.chart.ScatterChart)
+(defobject stacked-area-chart javafx.scene.chart.StackedAreaChart)
+(defobject stacked-bar-chart javafx.scene.chart.StackedBarChart)
+(defobject pie-chart-data javafx.scene.chart.PieChart$Data)
+(defobject xy-chart-data javafx.scene.chart.XYChart$Data)
+(defobject xy-chart-series javafx.scene.chart.XYChart$Series)
