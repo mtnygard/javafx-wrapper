@@ -1,4 +1,4 @@
-(defproject javafx-wrapper "0.1.0-SNAPSHOT"
+(defproject javafx-wrapper "0.1.0"
   :description  "Very thin wrapper around JavaFX objects"
 
   :url          "https://github.com/mtnygard/javafx-wrapper"
