@@ -11,4 +11,4 @@
 
   :plugins      [[codox "0.8.10"]]
 
-  :profiles     {:uberjar {:aot :all}})
+  :aot          :all)

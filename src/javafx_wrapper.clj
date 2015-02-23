@@ -1,4 +1,7 @@
 (ns javafx-wrapper
+  "Provides the `defobject` macro to create the wrapper for
+a JavaFX class. Also supplies the `apply-properties` function
+that updates an object's state from a map of properties."
   (:require [clojure.tools.macro :refer [name-with-attributes]]
             [camel-snake-kebab :refer :all])
   (:import [javafx.event EventHandler WeakEventHandler]))
@@ -20,13 +23,13 @@ be a function, which will be wrapped into a
 
 (defmulti make-control (fn [_ _ [_ {type :type}]] type))
 
-(defn handle
+(defn- handle
   [f]
   (reify EventHandler
     (handle [this event]
       (f event))))
 
-(defn weak [^EventHandler h]
+(defn- weak [^EventHandler h]
   (WeakEventHandler. h))
 
 (defn wrap-handler
@@ -50,17 +53,16 @@ be a function, which will be wrapped into a
     'wrap-handler
     (property-translators (.getReturnType p) 'identity)))
 
-(defn property-policy
+(defn- property-policy
   [p]
   (let [nm        (.getName p)
         nm        (subs nm 0 (- (count nm) (count "Property")))
         setter    (symbol (str "set" (->CamelCase nm)))
         kw        (keyword (->kebab-case nm))
         translate (property-translator p)]
-    (println (.getName p) " -> " translate)
     [kw setter translate]))
 
-(defn properties-of
+(defn- properties-of
   [class]
   (filter
    #(and (.endsWith (.getName %) "Property") (not (.startsWith (.getName %) "impl_")))
@@ -74,9 +76,7 @@ be a function, which will be wrapped into a
        (apply-properties [~'this ~'props]
          ~@(for [[kind setter-name translate] disposition]
              `(when (contains? ~'props ~kind)
-                (println "Updating " ~kind)
                 (let [v# (get ~'props ~kind)]
-                  (println "new value " v#)
                   (. ~'this (~setter-name (~translate v#))))))
          ~'this))))
 

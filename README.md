@@ -47,6 +47,9 @@ value.
 <Button Button@666d53d0[styleClass=button]''>
 ```
 
+The main advantage of this library comes when you AOT it: very minimal
+code but still a nice Clojure interface.
+
 ## License
 
 Copyright © 2015 Michael Nygard
