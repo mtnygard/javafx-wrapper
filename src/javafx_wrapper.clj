@@ -21,8 +21,6 @@ are treated specially. The value of an event handler should
 be a function, which will be wrapped into a
 `WeakEventHandler`."))
 
-(defmulti make-control (fn [_ _ [_ {type :type}]] type))
-
 (defn- handle
   [f]
   (reify EventHandler
