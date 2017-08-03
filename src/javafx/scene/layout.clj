@@ -40,4 +40,3 @@
   ([] (javafx.scene.layout.VBox.))
   ([spacing & children]
    (javafx.scene.layout.VBox. spacing (into-array javafx.scene.Node children))))
-(defobject corner-radii-converter javafx.scene.layout.CornerRadiiConverter)
